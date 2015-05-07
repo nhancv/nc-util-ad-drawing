@@ -1,6 +1,7 @@
 package cvnhan.android.androiddrawing;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -12,10 +13,14 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
+
+import java.io.UnsupportedEncodingException;
+
 /**
  * Created by cvnhan on 23-Apr-15.
  */
 public class DrawingView extends View {
+    public static String BASE64BITMAP=null;
     //drawing path
     private Path drawPath;
     //drawing and canvas paint
@@ -106,5 +111,15 @@ public class DrawingView extends View {
     public void startNew(){
         drawCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
         invalidate();
+    }
+
+    public void save(){
+        try {
+            BASE64BITMAP=Base64Util.encode(canvasBitmap);
+            getContext().startActivity(new Intent(DrawingView.this.getContext(), ImagePreview.class));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            BASE64BITMAP=null;
+        }
     }
 }

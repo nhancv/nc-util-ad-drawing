@@ -5,13 +5,9 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.Toast;
-
-import java.util.UUID;
 
 
 public class MainActivity extends Activity implements View.OnClickListener {
@@ -143,7 +139,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             });
             newDialog.show();
         }else if(view.getId()==R.id.save_btn){
-            AlertDialog.Builder saveDialog = new AlertDialog.Builder(this);
+            /*AlertDialog.Builder saveDialog = new AlertDialog.Builder(this);
             saveDialog.setTitle("Save drawing");
             saveDialog.setMessage("Save drawing to device Gallery?");
             saveDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener(){
@@ -170,8 +166,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
                     dialog.cancel();
                 }
             });
-            saveDialog.show();
-
+            saveDialog.show();*/
+            drawView.save();
         }
     }
 
